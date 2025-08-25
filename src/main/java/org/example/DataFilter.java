@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class DataFilter {
     public static void main(String[] args) {
         List<String> utilities = new ArrayList<>(Arrays.stream(args).toList());
 
