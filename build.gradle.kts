@@ -1,5 +1,6 @@
 plugins {
     java
+    application
 }
 
 group = "org.example"
@@ -10,8 +11,24 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+application {
+    mainClass.set("org.example.DataFilter")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+tasks.jar {
+    manifest {
+        attributes(
+            "Main-Class" to application.mainClass.get()
+        )
+    }
 }
 
 tasks.test {

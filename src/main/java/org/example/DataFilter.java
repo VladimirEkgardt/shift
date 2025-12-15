@@ -68,7 +68,7 @@ public class DataFilter {
         List<String> strings = new ArrayList<>();
 
         for (String file : utilities) {
-            try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 while (reader.ready()) {
                     String str = reader.readLine();
                     if (isInteger(str)) {
@@ -79,11 +79,11 @@ public class DataFilter {
                         strings.add(str);
                     }
                 }
-            } catch (FileNotFoundException e){
+            } catch (FileNotFoundException e) {
                 System.err.println("File not found: " + e.getMessage());
-            } catch (IOException e){
+            } catch (IOException e) {
                 System.err.println("Input error: " + e.getMessage());
-            } catch (Exception e){
+            } catch (Exception e) {
                 System.err.println("Another error: " + e.getMessage());
                 throw new RuntimeException(e);
             }
@@ -128,7 +128,7 @@ public class DataFilter {
     }
 
     private static void printToFile(List<String> list, String fileName, boolean append) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, append))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, append))) {
             list.forEach(i -> {
                 try {
                     writer.write(String.valueOf(i));
@@ -137,7 +137,7 @@ public class DataFilter {
                     throw new RuntimeException(e);
                 }
             });
-        } catch(IOException e){
+        } catch (IOException e) {
             System.err.println("Output error: " + e.getMessage());
             throw new RuntimeException(e);
         }
